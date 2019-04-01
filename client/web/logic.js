@@ -21,7 +21,7 @@ function renderData()
 }
 let datastr = httpGet('http://localhost:3000/getlogs');
 data = JSON.parse(datastr);
-data = data.data;
+// data = data.data;
 
 console.log(data);
 

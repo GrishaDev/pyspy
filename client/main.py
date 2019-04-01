@@ -23,7 +23,7 @@ def on_press(key):
     else:
         if str(key) == "Key.space":
             message += " "
-            
+
 def on_release(key):
     global message
 
