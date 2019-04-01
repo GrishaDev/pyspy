@@ -66,7 +66,7 @@ router.get('/downloadlink', function(req, res, next) {
     // res.writeHead(200, {"Content-Type": "application/json"});
     // res.write(JSON.stringify({result:"Cleared logs."}));
     // res.end();
-    res.send("https://ufile.io/8ykqn")
+    res.send("https://ufile.io/1oujk")
 })
 
 router.post('/newmessage', (req,res)=>

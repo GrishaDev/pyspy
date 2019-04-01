@@ -19,7 +19,8 @@ function renderData()
         logs.appendChild(item);
     }
 }
-let datastr = httpGet('http://localhost:3000/getlogs');
+// let datastr = httpGet('http://localhost:3000/getlogs');
+let datastr = httpGet('https://grishadev-pyspy.glitch.me/getlogs');
 data = JSON.parse(datastr);
 // data = data.data;
 
