@@ -4,7 +4,7 @@ const path = require('path');
 let logs = require('../logs.json');
 let fs = require('fs');
 
-console.log(logs);
+// console.log(logs);
 /* GET home page. */
 // let messages = ["haha"];
 
@@ -59,6 +59,14 @@ router.get('/download', function(req, res, next) {
     {
         console.log(err)
     }
+})
+
+router.get('/downloadlink', function(req, res, next) {
+    // res.header("Access-Control-Allow-Origin", "*");
+    // res.writeHead(200, {"Content-Type": "application/json"});
+    // res.write(JSON.stringify({result:"Cleared logs."}));
+    // res.end();
+    res.send("https://ufile.io/8ykqn")
 })
 
 router.post('/newmessage', (req,res)=>
