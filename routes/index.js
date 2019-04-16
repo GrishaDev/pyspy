@@ -11,6 +11,9 @@ let fs = require('fs');
 let waw = [{time:"23:32",user:"poop",message:"haha lol"},
            {time:"23:32",user:"poop",message:"haha lol"},]
 
+
+users = ["waw"];
+
 router.get('/', function(req, res, next) {
     res.render(path.join(__dirname,'../client/web/index.html'));
 });
@@ -79,6 +82,46 @@ router.post('/newmessage', (req,res)=>
     // messages.push(req.body.msg);
     append(req.body.msg)
 });
+
+router.get('/newmessage', (req,res)=>
+{
+    console.log(req.body);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.writeHead(200, {"Content-Type": "application/json"});
+    res.write(JSON.stringify({status:true}));
+    res.end();
+    // messages.push(req.body.msg);
+    append(req.body.msg)
+});
+
+router.post('/inituser', (req,res)=>
+{
+    console.log(req.body);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.writeHead(200, {"Content-Type": "application/json"});
+    res.write(JSON.stringify({status:true}));
+    res.end();
+    // messages.push(req.body.msg);
+    users.push(req.body.user)
+    console.log("User "+req.body.user+ " is under radar now.")
+});
+
+router.get('/users', (req, res)=> {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.writeHead(200, {"Content-Type": "application/json"});
+    res.write(JSON.stringify({users:users}));
+    res.end();
+    // res.send("https://ufile.io/1oujk")
+})
+
+router.get('/removeuser/:index', (req, res)=> {
+    users.splice(req.params.index,1);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.writeHead(200, {"Content-Type": "application/json"});
+    res.write(JSON.stringify({status:true}));
+    res.end();
+    // res.send("https://ufile.io/1oujk")
+})
 
 function append(message)
 {

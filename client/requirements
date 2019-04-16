@@ -1,0 +1,4 @@
+schedule
+pynput
+cx_freeze
+requests
