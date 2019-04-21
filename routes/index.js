@@ -15,7 +15,7 @@ let waw = [{time:"23:32",user:"poop",message:"haha lol"},
 users = ["waw"];
 
 router.get('/', function(req, res, next) {
-    res.render(path.join(__dirname,'../client/web/index.html'));
+    // res.render(path.join(__dirname,'../client/web/index.html'));
 });
 
 router.get('/getlogs', function(req, res, next) 

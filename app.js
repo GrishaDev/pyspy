@@ -14,7 +14,9 @@ var app = express();
 // app.set('views', path.join(__dirname, 'views'));
 // app.engine('html', require('ejs').renderFile);
 // app.set('view engine', 'html');
-app.use(express.static("client/web"));
+
+// app.use(express.static("client/web"));
+app.use(express.static("client/web/pyspyng"));
 // app.set('views', __dirname);
 
 app.use(logger('dev'));
