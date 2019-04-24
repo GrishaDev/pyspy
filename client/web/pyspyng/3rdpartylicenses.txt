@@ -325,15 +325,23 @@ THE SOFTWARE.
 @angular/platform-browser
 MIT
 
+@angular/material/tooltip
+
+@angular/material/button
+
+@angular/material/snack-bar
+
+@angular/material/dialog
+
 @angular/material/sidenav
 
 @angular/material/menu
 
 @angular/material/toolbar
 
-@angular/material/button
-
 @angular/material/icon
+
+@angular/material/progress-spinner
 
 @angular/forms
 MIT

