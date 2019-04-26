@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 let bodyParser = require('body-parser');
+const cors =require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -14,8 +15,18 @@ var app = express();
 // app.set('views', path.join(__dirname, 'views'));
 // app.engine('html', require('ejs').renderFile);
 // app.set('view engine', 'html');
-app.use(express.static("client/web"));
+
+// app.use(express.static("client/web"));
+app.use(express.static("client/web/pyspyng"));
 // app.set('views', __dirname);
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.use(cors());
 
 app.use(logger('dev'));
 app.use(express.json());

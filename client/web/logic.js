@@ -20,7 +20,7 @@ function renderData()
     }
 }
 // let datastr = httpGet('http://localhost:3000/getlogs');
-let datastr = httpGet('https://grishadev-pyspy.glitch.me/getlogs');
+let datastr = httpGet('/getlogs');
 data = JSON.parse(datastr);
 // data = data.data;
 
