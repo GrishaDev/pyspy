@@ -2,3 +2,4 @@ schedule
 pynput
 cx_freeze
 requests
+pywin32

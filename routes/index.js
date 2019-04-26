@@ -16,7 +16,7 @@ let waw = [{time:"23:32",user:"poop",message:"haha lol"},
 
 // users = ["waw","bamba","lol"];
 
-const downloadlink = "https://ufile.io/1oujk";
+const downloadlink = "https://ufile.io/u60ggdnm";
 
 router.get('/', function(req, res, next) {
     // res.render(path.join(__dirname,'../client/web/index.html'));

